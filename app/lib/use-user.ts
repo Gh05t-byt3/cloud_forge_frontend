@@ -18,7 +18,12 @@ export const useUser = () => {
     mutationFn: registerUser
   })
 
-  return { user, logOut, register }
+  const login = useMutation({
+    mutationKey: ["user"],
+    mutationFn: Login
+  })
+
+  return { user, logOut, register, login }
 }
 
 
@@ -44,15 +49,25 @@ async function logOutUer() {
 }
 
 
-type InsertUser = { 
+type InsertUser = {
   email: string
   password: string
   firstName: string
   lastName: string
 }
 
-async function registerUser({ user }: {user: InsertUser}) {
+async function registerUser({ user }: { user: InsertUser }) {
   const res = await API.post("/user", user)
   return res.data
 }
 
+type LoginPayload = {
+  email: string
+  password: string
+}
+
+async function Login(user: LoginPayload) {
+  const res = await API.post("/user/login", user)
+  console.log("Login response:", res.data)
+  return res.data
+}

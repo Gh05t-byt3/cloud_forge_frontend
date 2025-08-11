@@ -11,7 +11,7 @@ export default function Register() {
   const [password, setPassword] = useState("")
 
   return <div className="min-h-screen flex flex-col justify-center items-center">
-    <form className="w-[340px] flex flex-col gap-2">
+    <form action="#" className="w-[340px] flex flex-col gap-2">
       <Input placeholder="First Name" value={fname} onChange={(e) => setFname(e.target.value)} />
       <Input placeholder="Last Name" value={lname} onChange={(e) => setLname(e.target.value)} />
       <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
